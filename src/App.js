@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class MyComponent extends Component{
+  state = {
+    likes: 0,
+    word: 'likes'
+  }
+  
+  handleClick = e =>{
+    if(this.state.likes === 0){
+      this.setState({
+        word: 'like'
+      })
+      }else{
+        this.setState({
+          word: 'likes'
+        })
+    }
+    this.setState({
+      likes: this.state.likes +1
+    })
+  }
+
+
+  
+  render(){
+
+    return(
+      <div id="body">
+        <button id="two" onClick={this.handleClick}>{this.state.likes} {this.state.word}</button>
+      </div>
+    )
+  }
 }
 
-export default App;
+
+export default MyComponent;
